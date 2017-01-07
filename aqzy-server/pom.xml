@@ -17,10 +17,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>com.bell</groupId>
@@ -28,14 +24,27 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>dubbo</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>assemble-zip</id>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

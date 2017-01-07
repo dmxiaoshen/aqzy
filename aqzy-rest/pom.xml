@@ -12,11 +12,6 @@
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.bell</groupId>
 			<artifactId>common-base</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -33,16 +28,13 @@
 			<artifactId>common-rest</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>dubbo</artifactId>
+			<groupId>com.bell</groupId>
+			<artifactId>aqzy-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-		</dependency>
 	</dependencies>
 	<build>
 		<finalName>aqzy-rest</finalName>
