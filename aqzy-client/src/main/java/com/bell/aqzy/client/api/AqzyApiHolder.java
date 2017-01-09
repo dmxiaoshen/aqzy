@@ -10,4 +10,24 @@ public class AqzyApiHolder extends AbstractApiHolder {
 	static {
 		userService = getBean(UserService.class);
 	}
+
+	@Override
+	public void showService() {
+		System.out.println("--AqzyApiHolder--initialize start");
+		printServiceList();
+		System.out.println("--AqzyApiHolder--initialize end");
+		
+		logger.error("--AqzyApiHolder--initialize start");
+		logServieList();
+		logger.error("--AqzyApiHolder--initialize end");
+	}
+	
+	private void printServiceList(){
+		printService("userService");
+	}
+	
+	private void logServieList(){
+		logService("userService");
+	}
+	
 }

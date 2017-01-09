@@ -1,7 +1,41 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This web.xml file is not required when using Servlet 3.0 container, 
+	see implementation details http://jersey.java.net/nonav/documentation/latest/jax-rs.html -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<servlet>
+		<servlet-name>aqzy webservice</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<!-- 通过扫描包加载 -->
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>com.bell.aqzy.rest.resource</param-value>
+		</init-param>
+		<!-- 通过资源加载类加载 -->
+		<!-- <init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.bell.aqzy.rest.load.ApplicationLoad</param-value>
+		</init-param> -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aqzy webservice</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>aqzyDubboServlet</servlet-name>
+		<servlet-class>com.bell.aqzy.client.api.AqzyDubboServlet</servlet-class>
+		<init-param>
+			<param-name>appName</param-name>
+			<param-value>aqzy-rest</param-value>
+		</init-param>
+		<init-param>
+			<param-name>zkAddress</param-name>
+			<param-value>zookeeper://localhost:2181</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
 </web-app>
