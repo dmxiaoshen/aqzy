@@ -8,6 +8,7 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 
+import com.bell.aqzy.client.api.AqzyApiHolder;
 import com.bell.aqzy.client.api.AqzyDubboContext;
 
 public class StartRest {

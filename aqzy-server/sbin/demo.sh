@@ -19,7 +19,7 @@ fi
 # 项目名称，项目日志位置
 PROJECT_NAME=aqzyserver
 # 项目启动入口
-PROJECT_MAIN=com.bell.aqzy.ServiceStart
+PROJECT_MAIN=com.bell.aqzy.server.AqzyService
 ###################################################################################################################################
 # 启动用户
 SERVICE_USER=root

@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">	
+	<!-- 配置aqzy数据源 -->
+	<bean name="aqzy-dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="url" value="${aqzy.jdbc.url}"/>
+		<property name="username" value="${aqzy.jdbc.username}"/>
+		<property name="password" value="${aqzy.jdbc.password}"/>
+		<property name="initialSize" value="${aqzy.jdbc.initialSize}"/>
+		<property name="maxActive" value="${aqzy.jdbc.maxActive}"/>
+		<property name="minIdle" value="${aqzy.jdbc.minIdle}"/>
+		<property name="maxWait" value="${jdbc.maxWait}"/>
+		<property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}"/>
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="${jdbc.maxPoolPreparedStatementPerConnectionSize}"/>
+		<property name="validationQuery" value="${jdbc.validationQuery}"/>
+		<property name="testOnBorrow" value="${jdbc.testOnBorrow}"/>
+		<property name="testOnReturn" value="${jdbc.testOnReturn}"/>
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}"/>
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"/>
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}"/>
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}"/>
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}"/>
+		<property name="logAbandoned" value="${jdbc.logAbandoned}"/>
+		<property name="filters" value="${jdbc.filters}"/>
+	</bean>
+	
+	<!-- aqzy定义SqlSessionFactory-->
+	<bean id="aqzy-sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <!-- mybatis的默认配置文件,具体作用有待挖掘 -->
+		<property name="configLocation" value="classpath:mybatis/common-mybatis.xml" />
+		<property name="dataSource" ref="aqzy-dataSource" />
+		<!-- 如果dao接口和xml文件在同一个package下，则这里可以不用配置 -->
+		<property name="mapperLocations" value="classpath*:com/bell/aqzy/core/dao/xml/*.xml"/>
+		<property name="plugins">
+			<list>
+				<ref bean="pagehelper" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- mybatis分页插件 -->
+	<bean id="pagehelper" class="com.github.pagehelper.PageHelper">
+		<property name="properties">
+			<props>
+				<prop key="offsetAsPageNum">true</prop>
+				<prop key="rowBoundsWithCount">true</prop>
+				<prop key="pageSizeZero">true</prop>
+				<prop key="reasonable">false</prop>
+				<prop key="supportMethodsArguments">false</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

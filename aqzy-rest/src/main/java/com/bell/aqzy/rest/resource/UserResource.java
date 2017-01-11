@@ -12,6 +12,7 @@ import com.bell.aqzy.api.model.User;
 import com.bell.aqzy.api.service.UserService;
 import com.bell.aqzy.client.api.AqzyApiHolder;
 import com.bell.common.rest.resource.AbstractResource;
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -31,7 +32,13 @@ public class UserResource extends AbstractResource{
 		u.setAge(33);
 		UserService userService = AqzyApiHolder.userService;
 		User k = userService.getUser("李强", 29);
-		return Response.status(Status.OK).type(MediaType.APPLICATION_JSON).entity(GSON.toJson(k)).build();
+		userService.addUser(name, 19);
+		PageInfo<User> result = userService.query(1, 5);
+		return Response.status(Status.OK).type(MediaType.APPLICATION_JSON).entity(GSON.toJson(result)).build();
 	}
+    
+   /* public Response addUser(){
+    	
+    }*/
 
 }

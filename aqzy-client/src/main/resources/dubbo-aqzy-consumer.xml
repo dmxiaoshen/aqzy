@@ -8,6 +8,6 @@
 	<context:component-scan base-package="com.bell.aqzy" />
      
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="userService" interface="com.bell.aqzy.api.service.UserService" />
+    <dubbo:reference id="userService" interface="com.bell.aqzy.api.service.UserService" timeout="10000"/>
  
 </beans>

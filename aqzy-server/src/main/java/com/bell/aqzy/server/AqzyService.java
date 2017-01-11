@@ -6,11 +6,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Hello world!
  *
  */
-public class ServiceStart {
+public class AqzyService {
 	public static void main(String[] args) throws InterruptedException {
 		@SuppressWarnings("resource")
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-				"dubbo-aqzy-provider.xml");
+				"classpath*:config/dubbo-aqzy-server.xml");
 		// applicationContext.registerShutdownHook();
 		applicationContext.start();
 		System.out.println("---start---");
