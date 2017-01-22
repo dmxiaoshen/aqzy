@@ -1,5 +1,6 @@
 package com.bell.aqzy.server.test.role;
 
+import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.UUID;
 
@@ -12,6 +13,13 @@ import com.bell.aqzy.api.service.RoleService;
 import com.bell.aqzy.server.test.BaseTest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 public class RoleServiceTest extends BaseTest{
 	
@@ -20,6 +28,20 @@ public class RoleServiceTest extends BaseTest{
 	public static final Gson GSONIGNORENULL = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 	
 	public static final Gson GS = new GsonBuilder().create();
+	
+	 public static final Gson GSON4DATE = new GsonBuilder().registerTypeAdapter(Date.class, new DateMutualLong()).create();
+
+	    public static class DateMutualLong implements JsonSerializer<Date>, JsonDeserializer<Date> {
+
+	        public JsonElement serialize(Date src, Type typeOfSrc, JsonSerializationContext context) {
+	            return new JsonPrimitive(src.getTime());
+	        }
+
+	        public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+	            return new Date(json.getAsJsonPrimitive().getAsLong());
+	        }
+
+	    }
 	
 	@Autowired
 	private RoleService roleService;
@@ -47,6 +69,7 @@ public class RoleServiceTest extends BaseTest{
 		System.out.println(GSON.toJson(r));
 		System.out.println(GSONIGNORENULL.toJson(r));
 		System.out.println(GS.toJson(r));
+		System.out.println(GSON4DATE.toJson(r));
 	}
 	
 	@Test
