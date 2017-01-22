@@ -8,7 +8,7 @@
 	http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
 	<!-- 使用SpringContextHolder.getBean('xxxx')的静态方法得到bean对象 -->
-	<bean class="com.bell.common.base.spring.SpringContextHolder"
+	<bean class="com.bell.common.core.spring.SpringContextHolder"
 		lazy-init="false" />
 
 	<!-- mybatis操作接口扫描  如果dao接口和xml文件在同一package下，则用这个配置即可-->
