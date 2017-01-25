@@ -15,18 +15,17 @@
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 		   <list>
-			  <value>classpath:config/properties/aqzy-jdbc.properties</value>
-			  <value>classpath:config/properties/aqzy-zookeeper.properties</value>
 			  <value>classpath:config/properties/aqzy-redis.properties</value>
 			</list>
 		</property>
 	</bean>
-	<!-- 导入本地配置-->
-	<import resource="classpath*:config/aqzy-beans.xml"/>
-	<import resource="classpath*:config/aqzy-ds.xml"/>
-	<import resource="classpath*:config/aqzy-tx.xml"/>
+	
+	<!-- 注解扫描范围 -->
+	<context:component-scan base-package="com.bell" />
+	
+	<!-- 使用SpringContextHolder.getBean('xxxx')的静态方法得到bean对象 -->
+	<bean class="com.bell.common.base.spring.SpringContextHolder"
+		lazy-init="false" />
+		
 	<import resource="classpath*:config/common-redis.xml"/>
-
-	<!-- 本地提供服务 -->
-	<import resource="classpath:config/dubbo-aqzy-provider.xml"/>
 </beans>

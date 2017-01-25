@@ -7,6 +7,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bell.aqzy.client.api.AqzyApiHolder;
 import com.bell.aqzy.client.api.AqzyDubboContext;
@@ -34,6 +35,9 @@ public class StartRest {
 		try {
 			// 拉取dubbo服务
 			new AqzyDubboContext("aqzy-rest", "zookeeper://localhost:2181").start();
+			
+			ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:rest-context.xml");
+			context.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
