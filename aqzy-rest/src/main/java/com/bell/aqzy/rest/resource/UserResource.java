@@ -38,8 +38,8 @@ public class UserResource extends AbstractResource{
 		u.setAge(33);
 		UserService userService = AqzyApiHolder.userService;
 		User k = userService.getUser("李强", 29);
-		userService.addUser(name, 19);
-		userService.addUser("扬州", 21);
+		//userService.addUser(name, 19);
+		//userService.addUser("扬州", 21);
 		PageInfo<User> result = userService.query(1, 5);
 		String str = redisClientTemplate.get("foo");
 		String s = redisClientTemplate.get("fk");

@@ -34,7 +34,7 @@ public class StartRest {
 		rc.property(ServerProperties.BV_DISABLE_VALIDATE_ON_EXECUTABLE_OVERRIDE_CHECK, true);
 		try {
 			// 拉取dubbo服务
-			new AqzyDubboContext("aqzy-rest", "zookeeper://localhost:2181").start();
+			new AqzyDubboContext("aqzy-rest", "zookeeper://45.32.19.181:2181").start();
 			
 			ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:rest-context.xml");
 			context.start();
