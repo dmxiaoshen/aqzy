@@ -8,6 +8,7 @@
 	</parent>
 	<artifactId>aqzy-core</artifactId>
 	<packaging>jar</packaging>
+	<version>1.0.1-SNAPSHOT</version>
 
 	<name>aqzy-core</name>
 	<url>http://maven.apache.org</url>
@@ -33,7 +34,7 @@
 		<dependency>
 			<groupId>com.bell</groupId>
 			<artifactId>aqzy-api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

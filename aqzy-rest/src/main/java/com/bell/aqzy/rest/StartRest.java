@@ -9,7 +9,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.bell.aqzy.client.api.AqzyApiHolder;
 import com.bell.aqzy.client.api.AqzyDubboContext;
 
 public class StartRest {
